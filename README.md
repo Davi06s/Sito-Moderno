@@ -12,6 +12,16 @@ Puoi visualizzare il progetto completato e funzionante direttamente a questo lin
 Il layout e la prototipazione grafica originale del progetto sono consultabili pubblicamente su Figma:
 **[Guarda il Progetto Figma](https://www.figma.com/design/wMxG2mS4bmg1ugx4sI9CIj/Full-Stack-Exercise?node-id=0-1&t=MtuEqirknpfZzmiT-1)**
 
+## 📸 Confronto: Prima e Dopo
+
+Di seguito puoi osservare il salto di qualità tra la versione originale e il restyling moderno:
+
+### Prima (Layout Originale)
+![Screenshot del sito web prima dell'intervento](img/prima.png)
+
+### Dopo (Layout Modernizzato)
+![Screenshot del risultato finale del sito web post-restyling](img/dopo.png)
+
 Il design modernizzato è stato interamente realizzato ponendo il focus sulle tecniche e le interfacce user experience front-end odierne, basandosi sul vasto motore e styling di **Tailwind CSS**.
 
 ## 📂 Struttura del Progetto
