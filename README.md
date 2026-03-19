@@ -51,4 +51,3 @@ Oltre all'utilizzo profuso di basi teoriche per una corretta accessibilità (ARI
 - **Google Web Fonts**: La tipografia ruota sul connubio ben equilibrato tra il font primario sans-serif (*Outfit*), pulito su paragrafi, unito al contrasto d'impatto forte dei titoli per mezzo di una versione serif d'editoria (*Playfair Display*).
 
 ---
-*Progetto documentato in fase di revisione finale.*
