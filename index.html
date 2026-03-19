@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio Layout 3 - Ultra Modern Fullwidth</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Correlati allo Slider (mantenuti solo per retrocompatibilità javascript o ridisegnati via tailwind se possibile, mantengo i vecchi css solo se essenziali per nivo. qui per nivo) -->
+    <link rel="stylesheet" href="css/default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Potenziale predisposizione
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',     // Un blu elettrico modernissimo
+                        primaryDark: '#0284c7', 
+                        secondary: '#0f172a',   // Slate super scuro (quasi nero)
+                        surface: '#ffffff',
+                        surfaceAlt: '#f8fafc',  // Slate leggerissimo
+                        accent: '#f43f5e',      // Rose brillante per accenti "wow"
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'], // Font ultra moderno e geometrico
+                        heading: ['"Playfair Display"', 'serif'], // Contrasto editoriale chic
+                    },
+                    boxShadow: {
+                        'neon': '0 0 40px -10px rgba(14, 165, 233, 0.4)',
+                        'float': '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'grid-pattern': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTU5LjUgMGguNXY2MEg2MHptMCA2MGguNXYtLjVINjB6TTAgNTkuNXYuNWg2MHYtLjVIMHoiIGZpbGw9IiNlN2U1ZTQiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Sovrascrittura forzata nivoslider per uniformarlo al layout modernissimo */
+        .theme-default .nivoSlider {
+            box-shadow: none !important;
+            border-radius: 2rem !important;
+            overflow: hidden !important;
+        }
+        .theme-default .nivo-controlNav {
+            padding: 20px 0 !important;
+            background: rgba(15, 23, 42, 0.3) !important;
+            backdrop-filter: blur(10px);
+            bottom: 2rem !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: auto !important;
+            border-radius: 100px !important;
+            padding: 10px 20px !important;
+            display: flex !important;
+            gap: 10px !important;
+        }
+        .theme-default .nivo-controlNav a {
+            background: rgba(255,255,255,0.4) !important;
+            border: 0 !important;
+            width: 12px !important;
+            height: 12px !important;
+            border-radius: 50% !important;
+            margin: 0 !important;
+            transition: all 0.3s ease !important;
+        }
+        .theme-default .nivo-controlNav a.active {
+            background: #ffffff !important;
+            transform: scale(1.3) !important;
+        }
+    </style>
+</head>
+<body class="bg-surfaceAlt text-slate-600 font-sans antialiased text-lg selection:bg-primary selection:text-white overflow-x-hidden">
+
+<!-- Background Decorativo Globale -->
+<div class="fixed inset-0 pointer-events-none -z-10 bg-grid-pattern opacity-40"></div>
+<div class="fixed top-[-20%] left-[-10%] w-[50vw] h-[50vw] bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<div class="fixed bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] bg-accent/5 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+
+<!-- 2) Nav Ultra-Moderna Floating (Glassmorphism Intero) -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-[90%] md:w-[80%] max-w-7xl bg-secondary/70 backdrop-blur-xl border border-white/10 text-white z-50 rounded-full shadow- float transition-all duration-500">
+    <div class="flex items-center justify-between px-8 py-4">
+        <div class="font-heading italic font-bold text-2xl tracking-tighter w-1/4">
+            <span class="text-primary">L</span>ayout<span class="text-accent">.</span>
+        </div>
+        <div class="hidden lg:flex justify-center space-x-2">
+            <a href="#" class="px-6 py-2 rounded-full font-semibold text-sm uppercase tracking-widest bg-white/10 hover:bg-primary text-white transition-all duration-300">Home</a>
+            <a href="#features" class="px-6 py-2 rounded-full font-semibold text-sm uppercase tracking-widest hover:bg-white/10 text-slate-300 hover:text-white transition-all duration-300">Chi Siamo</a>
+            <a href="#explore" class="px-6 py-2 rounded-full font-semibold text-sm uppercase tracking-widest hover:bg-white/10 text-slate-300 hover:text-white transition-all duration-300">Servizi</a>
+        </div>
+        <div class="w-1/4 flex justify-end">
+            <a href="#footer" class="hidden md:inline-block px-8 py-3 rounded-full bg-gradient-to-r from-primary to-primaryDark text-white font-bold text-sm tracking-wider shadow-neon hover:shadow-none hover:scale-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-300">
+                Contatti
+            </a>
+            <!-- Mobile Menu Btn -->
+            <button class="lg:hidden text-white hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors" aria-label="Apri menu di navigazione">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="w-full">
+    
+    <!-- 1) Header Hero a tutto schermo -->
+    <header class="relative w-full min-h-[90vh] flex items-center justify-center overflow-hidden bg-secondary">
+        <!-- Slider come Background dell'Hero -->
+        <div class="absolute inset-0 z-0 opacity-40 mix-blend-luminosity">
+            <div class="slider-wrapper theme-default w-full h-full scale-110">
+                <div id="slider" class="nivoSlider !rounded-none">
+                    <img src="img/times-square-traffic.jpg" alt="Times Square Background" class="object-cover h-screen" />
+                    <img src="img/times-square-people.jpg" alt="Times Square People" class="object-cover h-screen" />
+                    <img src="img/times-square-horse.jpg" alt="Times Square Horse" class="object-cover h-screen" />
+                </div>
+            </div>
+        </div>
+        <!-- Overlay Gradiente -->
+        <div class="absolute inset-0 z-0 bg-gradient-to-t from-secondary via-secondary/80 to-transparent"></div>
+
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center mt-20">
+            <h1 class="font-heading text-6xl md:text-8xl lg:text-[140px] leading-none text-white font-bold mb-6 drop-shadow-2xl">
+                Il Mio <span class="italic text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Layout</span>
+            </h1>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#explore" class="px-10 py-5 rounded-full bg-white text-secondary font-bold text-lg tracking-wide hover:scale-105 shadow-float focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-white transition-transform duration-300">
+                    Esplora Ora
+                </a>
+                <a href="#features" class="px-10 py-5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-lg tracking-wide hover:bg-white/20 focus-visible:outline focus-visible:outline-4 focus-visible:outline-offset-2 focus-visible:outline-white transition-all duration-300">
+                    Scopri di Più
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center animate-bounce text-white/50">
+            <span class="text-xs font-bold uppercase tracking-widest mb-2">Scorri</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </header>
+    
+    <!-- 4) Item-evi x3 (Features Ultra-Wide) -->
+    <section id="features" class="w-full bg-surface py-32 px-6">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="font-heading text-4xl md:text-6xl text-secondary font-bold mb-6">Punti in <span class="italic text-primary">Evidenza</span></h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-primary to-accent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Evidenza 1 -->
+                <div class="group p-12 rounded-[2.5rem] bg-surfaceAlt border border-slate-100 hover:bg-secondary hover:text-white transition-all duration-700 shadow-xl hover:shadow-2xl hover:-translate-y-4">
+                    <div class="w-20 h-20 bg-white rounded-3xl shadow-float flex items-center justify-center mb-10 text-secondary group-hover:scale-110 group-hover:bg-primary transition-all duration-500">
+                        <svg class="w-10 h-10 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    </div>
+                    <h3 class="font-heading text-3xl font-bold mb-6 group-hover:text-white transition-colors">Visione Globale</h3>
+                    <p class="text-slate-500 group-hover:text-slate-300 leading-relaxed text-xl transition-colors">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat.</p>
+                </div>
+                <!-- Evidenza 2 -->
+                <div class="group p-12 rounded-[2.5rem] bg-surfaceAlt border border-slate-100 hover:bg-secondary hover:text-white transition-all duration-700 shadow-xl hover:shadow-2xl hover:-translate-y-4 md:translate-y-12">
+                    <div class="w-20 h-20 bg-white rounded-3xl shadow-float flex items-center justify-center mb-10 text-secondary group-hover:scale-110 group-hover:bg-accent transition-all duration-500">
+                        <svg class="w-10 h-10 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="font-heading text-3xl font-bold mb-6 group-hover:text-white transition-colors">Performance</h3>
+                    <p class="text-slate-500 group-hover:text-slate-300 leading-relaxed text-xl transition-colors">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat.</p>
+                </div>
+                <!-- Evidenza 3 -->
+                <div class="group p-12 rounded-[2.5rem] bg-surfaceAlt border border-slate-100 hover:bg-secondary hover:text-white transition-all duration-700 shadow-xl hover:shadow-2xl hover:-translate-y-4">
+                    <div class="w-20 h-20 bg-white rounded-3xl shadow-float flex items-center justify-center mb-10 text-secondary group-hover:scale-110 group-hover:bg-primaryDark transition-all duration-500">
+                        <svg class="w-10 h-10 group-hover:text-white transition-colors" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    </div>
+                    <h3 class="font-heading text-3xl font-bold mb-6 group-hover:text-white transition-colors">Personalizzazione</h3>
+                    <p class="text-slate-500 group-hover:text-slate-300 leading-relaxed text-xl transition-colors">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur occaecat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 5) Mes-full (Banner Ultra Wide Parallax-Style) -->
+    <div class="w-full py-32 px-6 bg-secondary relative overflow-hidden flex items-center justify-center">
+        <div class="absolute inset-0 z-0 mix-blend-overlay opacity-30">
+            <img src="img/times-square-traffic.jpg" alt="Bg" class="w-full h-full object-cover scale-125" />
+        </div>
+        <!-- Gradient overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/90 to-accent/90 z-0"></div>
+        
+        <div class="relative z-10 text-center max-w-5xl">
+            <h2 class="font-heading text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-tight mb-8 drop-shadow-lg">
+                Questo è un messaggio importante a <span class="italic text-secondary/50 outline-white">tutta larghezza</span>.
+            </h2>
+            <button class="px-12 py-5 rounded-full bg-secondary text-white font-bold text-xl tracking-wide hover:bg-white hover:text-secondary hover:scale-105 shadow-float transition-all duration-300">
+                Inizia Ora
+            </button>
+        </div>
+    </div>
+    
+    <!-- 6) Content & Sidebar (Grid Layout moderno Wide) -->
+    <section id="explore" class="w-full py-32 px-6 lg:px-12 xl:px-24">
+        <div class="max-w-[1600px] mx-auto grid grid-cols-1 xl:grid-cols-12 gap-16 xl:gap-24">
+            
+            <!-- Content -->
+            <main class="xl:col-span-8 flex flex-col gap-16">
+                <div>
+                    <h2 class="font-heading text-4xl lg:text-5xl font-bold text-secondary mb-4">Ultimi <span class="italic text-primary">Articoli</span></h2>
+                    <p class="text-xl text-slate-500 max-w-2xl mb-12">Le ultime novità sul web design e sull'implementazione di interfacce ultra-moderne.</p>
+                </div>
+                
+                <article class="group w-full rounded-[3rem] overflow-hidden bg-white shadow-float border border-slate-100 flex flex-col md:flex-row hover:-translate-y-2 transition-transform duration-500">
+                    <div class="w-full md:w-1/2 h-80 md:h-auto relative overflow-hidden">
+                        <div class="absolute inset-0 bg-secondary/20 group-hover:bg-transparent transition-colors z-10 duration-500"></div>
+                        <img src="img/times-square.jpg" alt="Articolo" class="w-full h-full object-cover rounded-t-[3rem] md:rounded-l-[3rem] md:rounded-tr-none group-hover:scale-110 transition-transform duration-1000" />
+                    </div>
+                    <div class="flex-1 p-10 lg:p-14 flex flex-col justify-center relative">
+                        <!-- Categoria flottante -->
+                        <span class="absolute top-10 right-10 px-4 py-2 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-widest">Design</span>
+                        
+                        <h3 class="font-heading text-3xl lg:text-4xl text-secondary font-bold mb-6 group-hover:text-primary transition-colors pr-12">Il fututo dei Layout in CSS Grid</h3>
+                        <p class="text-slate-500 text-lg leading-relaxed mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. Lorem ipsum.</p>
+                        
+                        <a href="#" class="inline-flex items-center text-secondary font-bold text-lg hover:text-primary transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary group/btn" aria-label="Leggi articolo completo: Il futuro dei Layout in CSS Grid">
+                            <span class="border-b-2 border-secondary group-hover/btn:border-primary pb-1">Leggi Articolo</span>
+                            <svg class="w-6 h-6 ml-3 group-hover/btn:translate-x-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+                
+                <article class="group w-full rounded-[3rem] overflow-hidden bg-white shadow-float border border-slate-100 flex flex-col md:flex-row-reverse hover:-translate-y-2 transition-transform duration-500">
+                    <div class="w-full md:w-1/2 h-80 md:h-auto relative overflow-hidden">
+                        <div class="absolute inset-0 bg-secondary/20 group-hover:bg-transparent transition-colors z-10 duration-500"></div>
+                        <img src="img/times-square.jpg" alt="Articolo" class="w-full h-full object-cover rounded-t-[3rem] md:rounded-r-[3rem] md:rounded-tl-none group-hover:scale-110 transition-transform duration-1000" />
+                    </div>
+                    <div class="flex-1 p-10 lg:p-14 flex flex-col justify-center relative">
+                        <!-- Categoria flottante -->
+                        <span class="absolute top-10 left-10 px-4 py-2 rounded-full bg-accent/10 text-accent font-bold text-xs uppercase tracking-widest">Sviluppo</span>
+                        
+                        <h3 class="font-heading text-3xl lg:text-4xl text-secondary font-bold mb-6 mt-8 group-hover:text-primary transition-colors">Micro-animazioni con Tailwind</h3>
+                        <p class="text-slate-500 text-lg leading-relaxed mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                        
+                        <a href="#" class="inline-flex items-center text-secondary font-bold text-lg hover:text-accent transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent group/btn" aria-label="Leggi articolo completo: Micro-animazioni con Tailwind">
+                            <span class="border-b-2 border-secondary group-hover/btn:border-accent pb-1">Leggi Articolo</span>
+                            <svg class="w-6 h-6 ml-3 group-hover/btn:translate-x-3 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </article>
+            </main>
+            
+            <!-- Sidebar Integrata come "Dashboard" laterale -->
+            <aside class="xl:col-span-4 space-y-12">
+                <!-- Autore / About -->
+                <div class="bg-secondary text-white p-12 rounded-[3rem] shadow-float text-center relative overflow-hidden">
+                    <div class="absolute -right-16 -top-16 w-40 h-40 bg-primary rounded-full blur-3xl opacity-50"></div>
+                    
+                    <div class="w-32 h-32 mx-auto rounded-full border-4 border-white/20 p-1 mb-6 relative z-10">
+                        <img src="https://ui-avatars.com/api/?name=Davide+S&background=0ea5e9&color=fff&size=200" alt="Avatar" class="w-full h-full rounded-full object-cover" />
+                    </div>
+                    <h2 class="font-heading text-3xl font-bold mb-2 relative z-10">Davide Shino</h2>
+                    <p class="text-primary font-bold uppercase tracking-widest text-xs mb-6 relative z-10">Frontend Developer</p>
+                    <p class="text-slate-300 text-lg mb-8 relative z-10">Contenuto della sidebar. Qui ci possono essere link utili, o una breve descrizione dell'autore che sviluppa questa landing page.</p>
+                    
+                    <div class="flex justify-center space-x-4 relative z-10">
+                        <a href="#" class="w-12 h-12 bg-white/10 hover:bg-primary rounded-full flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors" aria-label="Profilo Twitter dell'autore"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg></a>
+                        <a href="#" class="w-12 h-12 bg-white/10 hover:bg-primary rounded-full flex items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white transition-colors" aria-label="Profilo GitHub dell'autore"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
+                    </div>
+                </div>
+
+                <!-- Box Ricerca Minimal -->
+                <div class="bg-white p-4 rounded-full border border-slate-200 shadow-sm flex items-center focus-within:ring-4 ring-primary/20 focus-within:border-primary transition-all">
+                    <svg class="w-6 h-6 text-slate-400 ml-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <label for="search-input" class="sr-only">Cerca articoli interessanti o news</label>
+                    <input id="search-input" type="search" placeholder="Cerca qualcosa..." class="w-full bg-transparent border-none text-lg text-secondary placeholder-slate-400 focus:outline-none py-3">
+                </div>
+
+                <!-- Trending Topics -->
+                <div>
+                    <h2 class="font-heading text-2xl font-bold text-secondary mb-6 pl-4 border-l-4 border-accent">Topic Popolari</h2>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#" class="px-5 py-2 rounded-full border border-slate-200 bg-white text-slate-600 hover:border-primary hover:text-primary hover:bg-primary/5 transition-colors">Design System</a>
+                        <a href="#" class="px-5 py-2 rounded-full border border-slate-200 bg-white text-slate-600 hover:border-primary hover:text-primary hover:bg-primary/5 transition-colors">Tailwind CSS</a>
+                        <a href="#" class="px-5 py-2 rounded-full border border-slate-200 bg-white text-slate-600 hover:border-primary hover:text-primary hover:bg-primary/5 transition-colors">Javascript</a>
+                        <a href="#" class="px-5 py-2 rounded-full border border-slate-200 bg-white text-slate-600 hover:border-primary hover:text-primary hover:bg-primary/5 transition-colors">React</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+    
+    <!-- 9) Footer Ultra Massive -->
+    <footer id="footer" class="bg-secondary text-white pt-32 pb-10 px-6 mt-auto relative overflow-hidden">
+        <!-- Decorazioni Background Footer -->
+        <div class="absolute top-0 right-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+        <div class="absolute bottom-[-50%] left-[-10%] w-[50vw] h-[50vw] bg-primary rounded-full blur-[150px] opacity-20 pointer-events-none"></div>
+
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-8 mb-24">
+            <!-- Brand -->
+            <div class="lg:col-span-1">
+                <div class="font-heading italic font-bold text-4xl tracking-tighter mb-6">
+                    <span class="text-primary">L</span>ayout<span class="text-accent">.</span>
+                </div>
+                <p class="text-slate-400 text-lg leading-relaxed mb-8">Eleviamo il design moderno sfidando i limiti dello spazio convenzionale. Questo Layout prende vita occupando l'intero schermo.</p>
+                <div class="flex space-x-4">
+                    <!-- Facebook Icon -->
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#1877F2] hover:border-[#1877F2] transition-all group">
+                        <svg class="w-5 h-5 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <!-- LinkedIn Icon -->
+                    <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all group">
+                        <svg class="w-5 h-5 text-white group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="lg:col-span-1 lg:pl-10">
+                <h2 class="font-bold text-xl uppercase tracking-widest mb-8">Risorse</h2>
+                <ul class="space-y-4 text-lg text-slate-400">
+                    <li><a href="#" class="hover:text-primary transition-colors flex items-center"><span class="w-2 h-2 rounded-full bg-accent mr-3"></span> Home Page</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors flex items-center"><span class="w-2 h-2 rounded-full bg-accent mr-3"></span> Il Progetto</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors flex items-center"><span class="w-2 h-2 rounded-full bg-accent mr-3"></span> Case Study</a></li>
+                    <li><a href="#" class="hover:text-primary transition-colors flex items-center"><span class="w-2 h-2 rounded-full bg-accent mr-3"></span> FAQ</a></li>
+                </ul>
+            </div>
+            
+            <!-- Legal -->
+            <div class="lg:col-span-1">
+                <h2 class="font-bold text-xl uppercase tracking-widest mb-8">Legale</h2>
+                <ul class="space-y-4 text-lg text-slate-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Termini di Servizio</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Cookie Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Newsletter Big -->
+            <div class="lg:col-span-1">
+                <h2 class="font-bold text-xl uppercase tracking-widest mb-8">Resta Aggiornato</h2>
+                <p class="text-slate-400 text-lg mb-6">Iscriviti per ricevere aggiornamenti sui nostri layout futuristici.</p>
+                <div class="relative group">
+                    <label for="newsletter-email" class="sr-only">Iscriviti alla newsletter</label>
+                    <input id="newsletter-email" type="email" placeholder="Indirizzo Email" class="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white placeholder-slate-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+                    <button class="absolute right-2 top-2 bottom-2 aspect-square bg-primary text-white rounded-xl flex items-center justify-center hover:bg-primaryDark transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" aria-label="Iscriviti">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-[1400px] mx-auto border-t border-white/10 pt-10 flex flex-col md:flex-row items-center justify-between text-slate-500 text-center md:text-left">
+            <p>&copy; 2026 Esercizio Design Ultra Moderno.</p>
+            <p class="mt-4 md:mt-0">Fatto con creatività e <span class="text-primary font-bold">Tailwind</span></p>
+        </div>
+    </footer>
+    
+</div>
+
+<!-- JavaScript Scripts (jQuery & Nivo Slider) -->
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.js"></script>
+<script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider({
+            effect: 'fade', // Effetto Fade, più elegante
+            animSpeed: 800,
+            pauseTime: 5000,
+            directionNav: false, // Tolgo le frecce per un look più pulito, lascio solo i pallini controlNav
+            controlNav: true,
+            pauseOnHover: true
+        });
+    });
+</script>
+
+</body>
+</html>
