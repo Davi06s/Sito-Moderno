@@ -49,5 +49,3 @@ Oltre all'utilizzo profuso di basi teoriche per una corretta accessibilità (ARI
 - **Tailwind CSS**: Precaricato *on the fly* ai fini valutativi/didattici tramite il suo script in ambiente CDN (Content Delivery Network). Consente una estensione del CSS "utility-first" garantendo una profonda responsività senza appesantire il parsing con l'eccesso di macro classi e fogli esterni custom da importare.
 - **JavaScript & jQuery 1.7.x**: Per dimostrare l'integrazione modulare, sono state preservate le integrazioni legacy di file e chiamate jQuery per garantire le piene operatività, sebbene retrocompatibili, del plugin rotativo *Nivo Slider*. Esso è stato semplicemente sovrascritto nella visualizzazione da un overlay in tailwind e nel box-shadow senza alterarne la chiamata.
 - **Google Web Fonts**: La tipografia ruota sul connubio ben equilibrato tra il font primario sans-serif (*Outfit*), pulito su paragrafi, unito al contrasto d'impatto forte dei titoli per mezzo di una versione serif d'editoria (*Playfair Display*).
-
----
