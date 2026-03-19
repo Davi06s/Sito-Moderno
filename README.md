@@ -2,6 +2,11 @@
 
 Benvenuto nel progetto di restyling per l'Esercizio 3. Questo progetto illustra l'evoluzione da un layout in puro HTML/CSS tradizionale, rigido ad elementi standardizzati e datati (presente in `01-original-html`) verso un layout dal design *ultra-moderno*, layout *full-width* ed un impianto nativamente **responsivo** (presente in `03-sito-moderno`).
 
+## 🌍 Anteprima Live
+
+Puoi visualizzare il progetto completato e funzionante direttamente a questo link:
+**[https://davi06s.github.io/Sito-Moderno/](https://davi06s.github.io/Sito-Moderno/)**
+
 Il design modernizzato è stato interamente realizzato ponendo il focus sulle tecniche e le interfacce user experience front-end odierne, basandosi sul vasto motore e styling di **Tailwind CSS**.
 
 ## 📂 Struttura del Progetto
